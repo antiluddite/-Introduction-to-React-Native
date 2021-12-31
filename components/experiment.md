@@ -283,3 +283,29 @@ import { Input } from 'react-native-elements';
 />
 
 <Input placeholder="Password" secureTextEntry={true} />
+
+
+
+ const renderFavoriteItem = ({item}) => {
+            return (
+                <SwipeRow rightOpenValue={-100} style={styles.swipeRow}>
+                    <View style={styles.deleteView}>
+                        <TouchableOpacity
+                        style={styles.deleteTouchable}
+                        onPress={() => this.props.deleteFavorite(item.id)}
+                        >
+                        <Text style={styles.deleteText}>Delete</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <ListItem
+                            title={item.name}
+                            subtitle={item.description}
+                            leftAvatar={{source: {uri: baseUrl + item.image}}}
+                            onPress={() => navigate('CampsiteInfo', {campsiteId: item.id})}
+                        />
+                    </View>
+                </SwipeRow>
+            );
+        };

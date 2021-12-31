@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
 import { postFavorite, postComment } from "../redux/ActionCreators";
 
+
 const mapStateToProps = state => {
     return {
         campsites: state.campsites,
@@ -69,9 +70,6 @@ function RenderComments({comments}) {
             />
             <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
             </View> 
-                // {/* <Text style={{fontSize: 14}}>{item.text}</Text>
-                // <Text style={{fontSize: 12}}>{item.rating} Stars</Text>
-                // <Text style={{fontSize: 12}}>{`--${item.author}, ${item.date}`}</Text> */} */}
         );
     };
 
