@@ -157,7 +157,7 @@ const FavoritesNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgrounColor: '#5637DD'
+                backgroundColor: '#5637DD'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
