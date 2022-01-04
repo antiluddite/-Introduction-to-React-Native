@@ -31,6 +31,7 @@ class Favorites extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+        
         const renderFavoriteItem = ({item}) => {
             
             return (

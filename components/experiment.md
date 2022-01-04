@@ -332,7 +332,7 @@ const mapDispatchToProps = {
                          <TouchableOpacity
                             style={styles.deleteTouchable}
                             onPress={() =>
-                                Alert.alert(
+                                .(
                                     'Delete Favorite?',
                                     'Are you sure you wish to delete the favorite campsite ' +
                                         item.name +
