@@ -18,6 +18,8 @@ import { connect } from 'react-redux';
 import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '../redux/ActionCreators';
 import NetInfo from '@react-native-community/netinfo';
 
+// 
+
 
 const mapDispatchToProps = {
     fetchCampsites,
@@ -345,13 +347,26 @@ class Main extends Component {
                 connectionInfo.type, ToastAndroid.LONG)
         });
 
-        this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
-            this.handleConnectivityChange(connectionInfo);
-        });
+        this.showNetinfo();
+    
     }
 
     componentWillUnmount() {
         this.unsubscribeNetInfo();
+    }
+
+    showNetinfo = async() => {
+        let connectionInfo = await NetInfo.fetch();
+        if (connectionInfo) {
+          (Platform.OS === 'ios')
+              ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
+              : ToastAndroid.show('Initial Network Connectivity Type: ' +
+                  connectionInfo.type, ToastAndroid.LONG);
+      }
+
+        this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
+            this.handleConnectivityChange(connectionInfo);
+        });
     }
 
     handleConnectivityChange = connectionInfo => {
@@ -374,7 +389,7 @@ class Main extends Component {
         (Platform.OS === 'ios')
             ? Alert.alert('Connection change:', connectionMsg)
             : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
-    }
+    };
     
 
     render() {
